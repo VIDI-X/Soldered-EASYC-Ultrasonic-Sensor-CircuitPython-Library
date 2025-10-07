@@ -11,6 +11,11 @@ README.md explains what the driver does, how to copy it to a VIDI X board runnin
 
 This library lets a VIDI X (ESP32) read distance from an I²C ultrasonic module at address `0x34`, and optionally adjust that distance using the board’s built-in temperature sensor on `GPIO26`. The core driver is `UltrasonicSensor.py`, and there are two example programs: one for basic distance and echo time, and one that uses the temperature sensor to improve accuracy.   
 
+![DSC_3424-Edit-1024x683](https://github.com/user-attachments/assets/25877c7c-a05a-413b-a1fd-f8a3316b204f)
+[https://soldered.com/product/ultrasonic-sensor-with-easyc](https://soldered.com/product/ultrasonic-sensor-with-easyc)
+
+
+
 ## What’s inside
 
 The driver talks to a small microcontroller inside the ultrasonic module. It sends a “trigger” command, then reads two 16-bit values: distance in centimeters and echo pulse width in microseconds. Both values are little-endian and live at registers `0x01` and `0x02`. Trigger is issued by writing just the register address `0x00` with no payload. Those details are already baked into the driver, you don’t have to manage registers yourself. 
